@@ -33,7 +33,6 @@ class Generator
 			$table = $schema->createTable((string)$tableData['name']);
 
 			$columns = $tableData->column;
-			$foreignKeys = $tableData->{"foreign-key"};
 			$indexes = $tableData->index;
 			$uniqueIndexes = $tableData->unique;
 
@@ -48,11 +47,6 @@ class Generator
 				if ((string)$columnData['primaryKey'] == 'true') {
 					$table->setPrimaryKey(array((string)$columnData['name']));
 				}
-
-			}
-
-			foreach ($foreignKeys as $foreignKeyData) {
-//e.g. $table->addForeignKeyConstraint($myTable, array("user_id"), array("id"), array("onUpdate" => "CASCADE"));
 
 			}
 
@@ -74,6 +68,16 @@ class Generator
 					$table->addUniqueIndex($index);
 				}
 
+			}
+
+		}
+
+		foreach ($this->data->table as $tableData) {
+
+			$foreignKeys = $tableData->{"foreign-key"};
+
+			foreach ($foreignKeys as $foreignKeyData) {
+	//e.g. $table->addForeignKeyConstraint($myTable, array("user_id"), array("id"), array("onUpdate" => "CASCADE"));
 			}
 
 		}
