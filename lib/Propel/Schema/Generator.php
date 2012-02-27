@@ -8,6 +8,9 @@ class Generator
 	/** @var SimpleXmlElement */
 	protected $data;
 
+	/** @var array */
+	protected $tables;
+
 	/**
 	 *
 	 * initialize the generator with propel schema data
@@ -17,6 +20,7 @@ class Generator
 	{
 
 		$this->data = $data;
+		$this->tables = array();
 
 	}
 
@@ -70,14 +74,28 @@ class Generator
 
 			}
 
+			$this->tables[(string)$tableData['name']] = $table;
+
 		}
 
 		foreach ($this->data->table as $tableData) {
 
 			$foreignKeys = $tableData->{"foreign-key"};
+			$localTable = $this->tables[(string)$tableData['name']];
 
 			foreach ($foreignKeys as $foreignKeyData) {
-	//e.g. $table->addForeignKeyConstraint($myTable, array("user_id"), array("id"), array("onUpdate" => "CASCADE"));
+
+			    $foreignTableName = (string)$foreignKeyData['foreignTable'];
+			    $localColumn = (string)$foreignKeyData->reference['local'];
+			    $foreignColumn = (string)$foreignKeyData->reference['foreign'];
+
+			    $foreignTable = $this->tables[$foreignTableName];
+			    $localTable->addForeignKeyConstraint(
+			        $foreignTable,
+			        array($localColumn),
+			        array($foreignColumn)
+			    );
+
 			}
 
 		}
