@@ -4,6 +4,11 @@ namespace Propel;
 
 use Doctrine\Common\Annotations\AnnotationException;
 
+/**
+ * @category   Propel
+ * @package    Propel
+ * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
+ */
 class Configuration
 {
 

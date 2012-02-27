@@ -5,6 +5,11 @@ namespace Cli\Console;
 use Symfony\Component\Console\Application,
 	Symfony\Component\Console\Helper\HelperSet;
 
+/**
+ * @category   Cli
+ * @package    Cli
+ * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
+ */
 class ConsoleRunner
 {
 

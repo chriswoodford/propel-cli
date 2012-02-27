@@ -2,6 +2,11 @@
 
 namespace Propel;
 
+/**
+ * @category   Propel
+ * @package    Propel
+ * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
+ */
 class Version
 {
 

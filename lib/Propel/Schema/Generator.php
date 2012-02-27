@@ -2,6 +2,11 @@
 
 namespace Propel\Schema;
 
+/**
+ * @category   Propel
+ * @package    Propel\Schema
+ * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
+ */
 class Generator
 {
 

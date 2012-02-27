@@ -7,6 +7,11 @@ use Symfony\Component\Console\Command,
 	Symfony\Component\Console\Output,
 	Doctrine\DBAL;
 
+/**
+ * @category   Cli
+ * @package    Cli\Console\Command\SchemaTool
+ * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
+ */
 class UpdateCommand extends Command\Command
 {
 
@@ -39,7 +44,9 @@ class UpdateCommand extends Command\Command
             ),
         ))
         ->setHelp(<<<EOT
-This will be the help text
+Generate a set of SQL commands to migrate an existing database to
+the state of the supplied Propel schema
+
 EOT
         );
 
