@@ -32,7 +32,7 @@ class UpdateCommand extends Command\Command
         	),
             new Input\InputOption(
                 'datasource', '-d', Input\InputOption::VALUE_REQUIRED,
-                'Dumps the generated SQL statements to the screen (does not execute them).'
+                'Index to the datasource array in the propel configuration file.'
             ),
             new Input\InputOption(
                 'dump-sql', null, Input\InputOption::VALUE_NONE,
@@ -41,6 +41,10 @@ class UpdateCommand extends Command\Command
             new Input\InputOption(
                 'force', null, Input\InputOption::VALUE_NONE,
                 'Causes the generated SQL statements to be physically executed against your database.'
+            ),
+            new Input\InputOption(
+                'ignore-constraints', null, Input\InputOption::VALUE_NONE,
+                'Suppress foreign key constraints from sql.'
             ),
         ))
         ->setHelp(<<<EOT
@@ -61,6 +65,7 @@ EOT
     	$schemaFile = $input->getArgument('schema-file');
     	$configFile = $input->getArgument('config-file');
     	$dataSource = $input->getOption('datasource');
+    	$ignoreConstraints = $input->getOption('ignore-constraints');
 
     	// initialize propel
 		\Propel::init($configFile);
@@ -89,6 +94,13 @@ EOT
 		if ($input->getOption('dump-sql')) {
 
 			foreach ($sql as $stmt) {
+
+				if ($ignoreConstraints
+					&& preg_match('/CONSTRAINT/', $stmt)
+				) {
+					continue;
+				}
+
 				$output->write($stmt . ';' . PHP_EOL);
 			}
 
