@@ -1,13 +1,13 @@
 <?php
 
-namespace Cli\Console;
+namespace PropelCli\Console;
 
 use Symfony\Component\Console\Application,
 	Symfony\Component\Console\Helper\HelperSet;
 
 /**
- * @category   Cli
- * @package    Cli
+ * @category   PropelCli
+ * @package    PropelCli
  * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
  */
 class ConsoleRunner
@@ -22,7 +22,7 @@ class ConsoleRunner
     public static function run(HelperSet $helperSet)
     {
 
-        $cli = new Application('Propel Command Line Tool', \Propel\Version::VERSION);
+        $cli = new Application('Propel Command Line Tool', \PropelCli\Version::VERSION);
         $cli->setCatchExceptions(true);
         $cli->setHelperSet($helperSet);
 
@@ -39,7 +39,7 @@ class ConsoleRunner
     {
 
         $cli->addCommands(array(
-            new \Cli\Console\Command\SchemaTool\UpdateCommand(),
+            new \PropelCli\Console\Command\SchemaTool\UpdateCommand(),
         ));
 
     }

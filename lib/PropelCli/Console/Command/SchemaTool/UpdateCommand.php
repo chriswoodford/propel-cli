@@ -1,6 +1,6 @@
 <?php
 
-namespace Cli\Console\Command\SchemaTool;
+namespace PropelCli\Console\Command\SchemaTool;
 
 use Symfony\Component\Console\Command,
 	Symfony\Component\Console\Input,
@@ -8,8 +8,8 @@ use Symfony\Component\Console\Command,
 	Doctrine\DBAL;
 
 /**
- * @category   Cli
- * @package    Cli\Console\Command\SchemaTool
+ * @category   PropelCli
+ * @package    PropelCli\Console\Command\SchemaTool
  * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
  */
 class UpdateCommand extends Command\Command
@@ -74,7 +74,7 @@ EOT
 		$schemaXml = simplexml_load_file($schemaFile);
 
 		// intitialize doctrine DBAL with data from propel
-		$config = \Propel\Configuration::getDataSourceConfiguration($dataSource, \Propel::getConfiguration());
+		$config = \PropelCli\Configuration::getDataSourceConfiguration($dataSource, \Propel::getConfiguration());
 		$conn = DBAL\DriverManager::getConnection($config->toArray(), new DBAL\Configuration());
 		$sm = $conn->getSchemaManager();
 
@@ -85,7 +85,7 @@ EOT
 		$toSchema = new \Doctrine\DBAL\Schema\Schema();
 
 		// generate the schema object
-		$generator = new \Propel\Schema\Generator($schemaXml);
+		$generator = new \PropelCli\Schema\Generator($schemaXml);
 		$generator->generate($toSchema);
 
 		// generate the sql to migrate from fromSchema to toSchema
@@ -102,6 +102,7 @@ EOT
 				}
 
 				$output->write($stmt . ';' . PHP_EOL);
+
 			}
 
 		}

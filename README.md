@@ -22,7 +22,7 @@ versions of Propel.
 Requirements
 ============
 
-PHP 5.3.x
-Propel 1.3.x
-Doctrine DBAL 2.1.x
-Symfony Console Component
+PHP 5.3.x 
+Propel 1.3.x 
+Doctrine DBAL 2.1.x 
+Symfony Console Component 

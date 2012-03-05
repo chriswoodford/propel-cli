@@ -1,12 +1,12 @@
 <?php
 
-namespace Propel;
+namespace PropelCli;
 
 use Doctrine\Common\Annotations\AnnotationException;
 
 /**
- * @category   Propel
- * @package    Propel
+ * @category   PropelCli
+ * @package    PropelCli
  * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
  */
 class Configuration

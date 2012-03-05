@@ -1,10 +1,10 @@
 <?php
 
-namespace Propel\Schema;
+namespace PropelCli\Schema;
 
 /**
- * @category   Propel
- * @package    Propel\Schema
+ * @category   PropelCli
+ * @package    PropelCli\Schema
  * @copyright  Copyright (c) 2012 ideaPHP (http://www.ideaphp.com)
  */
 class Generator
