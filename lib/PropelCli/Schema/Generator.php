@@ -211,6 +211,9 @@ class Generator
 			case 'time':
 				return \Doctrine\DBAL\Types\Type::TIME;
 
+			case 'blob':
+				return \Doctrine\DBAL\Types\Type::BLOB;
+
 			default:
 				return $dataType;
 
