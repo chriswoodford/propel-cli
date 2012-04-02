@@ -4,7 +4,7 @@
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>PropelCli</name>
- <channel>pear.ideaphp.com</channel>
+ <uri>http://ideaphp.com/propel-cli</uri>
  <summary>Propel Command Line Tool</summary>
  <description>A collection of tools to aid in the development of applications that use the Propel ORM</description>
  <lead>
@@ -28,11 +28,38 @@
 -
  </notes>
  <contents>
-  <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="" name="bin/propel-cli" role="script">
-    <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
+  <dir name="/">
+   <dir name="bin" baseinstalldir="/">
+    <file name="propel-cli" role="script">
+     <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
+     <tasks:unixeol/>
+    </file>
+    <file name="propel-cli.php" role="script" />
+   </dir>
+   <dir name="lib">
+    <dir name="PropelCli">
+     <dir name="Console">
+      <dir name="Command">
+       <dir name="SchemaTool">
+        <file name="UpdateCommand.php" role="php" />
+       </dir>
+      </dir>
+      <file name="ConsoleRunner.php" role="php" />
+     </dir>
+     <dir name="Schema">
+      <file name="Generator.php" role="php" />
+     </dir>
+     <file name="Configuration.php" role="php" />
+     <file name="Version.php" role="php">
+      <tasks:replace from="@version@" to="version" type="package-info" />
+     </file>
+    </dir>
+   </dir>
+   <file name="README.md" role="doc"/>
+   <file name="LICENSE" role="doc"/>
+   <file name="VERSION" role="doc">
+    <tasks:replace from="@version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="" name="bin/propel-cli.php" role="script" />
   </dir>
  </contents>
  <dependencies>
@@ -61,6 +88,14 @@
   <filelist>
    <install as="propel-cli" name="bin/propel-cli" />
    <install as="propel-cli.php" name="bin/propel-cli.php" />
+   <install as="PropelCli/Console/Command/SchemaTool/UpdateCommand.php" name="lib/PropelCli/Console/Command/SchemaTool/UpdateCommand.php" />
+   <install as="PropelCli/Console/ConsoleRunner.php" name="lib/PropelCli/Console/ConsoleRunner.php" />
+   <install as="PropelCli/Schema/Generator.php" name="lib/PropelCli/Schema/Generator.php" />
+   <install as="PropelCli/Configuration.php" name="lib/PropelCli/Configuration.php" />
+   <install as="PropelCli/Version.php" name="lib/PropelCli/Version.php" />
+   <install as="LICENSE" name="LICENSE" />
+   <install as="README" name="README.md" />
+   <install as="VERSION" name="VERSION" />
   </filelist>
  </phprelease>
  <changelog>

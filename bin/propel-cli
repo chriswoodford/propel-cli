@@ -1,4 +1,4 @@
-#!/usr/bin/env php
+#!@php_bin@
 <?php
 
-include('cli.php');
+include('propel-cli.php');
