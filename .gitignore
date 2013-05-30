@@ -3,5 +3,9 @@
 .buildpath
 .project
 
+# Composer Files
+vendor/
+composer.lock
+
 #phpunit
 tests/phpunit.xml
