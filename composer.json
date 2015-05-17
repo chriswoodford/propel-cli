@@ -16,7 +16,7 @@
     "require-dev": {
         "jaz303/phake": "dev-master@dev",
         "phpunit/phpunit": "3.7.x",
-        "propel/propel_runtime": "1.3.0",
+        "propel/propel_runtime": "1.3.0"
     },
     "repositories": [
         {
